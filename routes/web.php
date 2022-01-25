@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard', ['competitions' => Competition::all()]);
 })->middleware(['auth'])->name('dashboard');
 
 Route::post('/competition', function () {
