@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Competition;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,14 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::post('/competition', function () {
+    $competition = Competition::create();
+    return redirect("competition/$competition->id");
+})->middleware(['auth']);
+
+Route::get('/competition/{competition}', function (Competition $competition) {
+    return view("competition", $competition);
+});
 
 require __DIR__.'/auth.php';
