@@ -614,6 +614,9 @@ select {
 .z-50 {
   z-index: 50;
 }
+.m-auto {
+  margin: auto;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -666,6 +669,9 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.mr-1 {
+  margin-right: 0.25rem;
+}
 .block {
   display: block;
 }
@@ -707,6 +713,11 @@ select {
 }
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-fit {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 .w-5 {
   width: 1.25rem;

@@ -12,10 +12,10 @@
                     You're logged in!
                 </div>
             </div>
-            <form class="py-10" action="{{ url('/competition') }}" method="post">
+            <form class="py-10 text-center" action="{{ url('/competition') }}" method="post">
                 @csrf
-                <button class="h-10 px-6 font-semibold rounded-md bg-indigo-600  text-white">
-                    Nouvelle compétition
+                <button class="py-2 px-6 font-semibold rounded-md bg-indigo-600  text-white">
+                    <i class="fas fa-plus mr-2"></i> Nouvelle compétition
                 </button>
             </form>
         </div>
