@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Competition;
+use App\Models\Game;
+use App\Models\Tournament;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +17,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create(['name' => 'Jojo', 'email' => 'jo@jo2.ch']);
-        Competition::factory()->create(['name' => 'Championnat des légendes']);
+        $user = User::factory()->create([
+            'name' => 'Jojo',
+            'email' => 'jo@jo2.ch'
+        ]);
+        $competition = Competition::create([
+            'name' => 'Championnat des légendes'
+        ]);
+        $tournament = Tournament::create([
+            'competition_id' => $competition->id,
+            'host_id' => $user->id,
+            'place' => 'Collège des Crêtets'
+        ]);
+        Game::create([
+            'tournament_id' => $tournament->id,
+            'player_1_id' => $user->id,
+            'player_2_id' => User::factory()->create()->id
+        ]);
     }
 }
