@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Competition;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        User::factory()->create(['name' => 'Jojo', 'email' => 'jo@jo2.ch']);
+        Competition::factory()->create(['name' => 'Championnat des légendes']);
     }
 }
