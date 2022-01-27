@@ -28,7 +28,7 @@ Route::post('/competition', function () {
 })->middleware(['auth']);
 
 Route::get('/competition/{competition}', function (Competition $competition) {
-    return view("competition", $competition);
+    return view("competition", $competition->load('tournaments'));
 });
 
 require __DIR__.'/auth.php';
