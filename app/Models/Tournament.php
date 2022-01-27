@@ -9,6 +9,10 @@ class Tournament extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'start_date' => 'date:d.m.Y',
+    ];
+
     public function competition() {
         return $this->belongsTo(Competition::class);
     }
