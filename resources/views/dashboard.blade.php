@@ -13,7 +13,6 @@
                         @foreach ($competitions as $competition)
                         <a href="{{ url('/competition/' . $competition->id) }}">
                             <li class="border-b py-2 hover:text-indigo-500">
-                                {{ $competition->id }}
                                 {{ $competition->name }}
                             </li>
                         </a>
