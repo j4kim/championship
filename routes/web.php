@@ -22,13 +22,13 @@ Route::get('/dashboard', function () {
     return view('dashboard', ['competitions' => Competition::all()]);
 })->middleware(['auth'])->name('dashboard');
 
-Route::post('/competition', function () {
+Route::post('/competitions', function () {
     $competition = Competition::create();
-    return redirect("competition/$competition->id");
+    return redirect("competitions/$competition->id");
 })->middleware(['auth']);
 
-Route::get('/competition/{competition}', function (Competition $competition) {
+Route::get('/competitions/{competition}', function (Competition $competition) {
     return view("competition", $competition->load('tournaments'));
-});
+})->middleware(['auth']);
 
 require __DIR__.'/auth.php';

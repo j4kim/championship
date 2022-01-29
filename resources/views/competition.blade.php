@@ -11,9 +11,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul class="border-t">
                         @foreach ($tournaments as $tournament)
-                            <a href="{{ url("/competition/$id/tournaments/$tournament[id]") }}">
+                            <a href="{{ url("/tournaments/$tournament[id]") }}">
                                 <li class="border-b py-2 hover:text-indigo-500">
-                                    Tournoi des légendes #{{ $tournament['id'] }} du {{ $tournament['start_date'] }}
+                                    Tournoi #{{ $tournament['id'] }} du {{ $tournament['start_date'] }}
                                 </li>
                             </a>
                         @endforeach

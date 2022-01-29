@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul class="border-t">
                         @foreach ($competitions as $competition)
-                        <a href="{{ url('/competition/' . $competition->id) }}">
+                        <a href="{{ url("/competitions/$competition->id") }}">
                             <li class="border-b py-2 hover:text-indigo-500">
                                 {{ $competition->name }}
                             </li>
@@ -20,7 +20,7 @@
                     </ul>
                 </div>
             </div>
-            <form class="py-10 text-center" action="{{ url('/competition') }}" method="post">
+            <form class="py-10 text-center" action="{{ url('/competitions') }}" method="post">
                 @csrf
                 <button class="py-2 px-6 font-semibold rounded-md bg-indigo-600 text-white">
                     <i class="fas fa-plus mr-2"></i> Nouvelle compétition
