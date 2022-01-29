@@ -33,7 +33,7 @@ Route::get('/competitions/{competition}', function (Competition $competition) {
 })->middleware(['auth']);
 
 Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
-    return view("tournament", $tournament->load('competition'));
+    return view("tournament", $tournament->load('competition', 'games.player1', 'games.player2'));
 })->middleware(['auth']);
 
 require __DIR__.'/auth.php';

@@ -22,7 +22,15 @@
                 </div>
             </div>
             <div>
-                Liste des matches ici
+                @foreach ($games as $game)
+                    <div>
+                        {{ $game['player1']['name'] }}
+                        {{ $game['player_1_score'] }}
+                        -
+                        {{ $game['player_2_score'] }}
+                        {{ $game['player2']['name'] }}
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
