@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Competition;
+use App\Models\Tournament;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,10 @@ Route::post('/competitions', function () {
 
 Route::get('/competitions/{competition}', function (Competition $competition) {
     return view("competition", $competition->load('tournaments'));
+})->middleware(['auth']);
+
+Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
+    return view("tournament", $tournament);
 })->middleware(['auth']);
 
 require __DIR__.'/auth.php';
