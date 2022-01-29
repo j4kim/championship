@@ -1,6 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl text-gray-800 leading-tight">
+            <a href="{{ url("/competitions/$competition[id]") }}" class="text-gray-500 hover:text-black">
+                {{ $competition["name"] }}
+            </a>
+            <i class="fas fa-angle-right text-sm mx-2"></i>
             Tournoi #{{ $id }} du {{ $start_date }}
         </h2>
     </x-slot>
