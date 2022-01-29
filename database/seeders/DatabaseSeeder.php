@@ -17,23 +17,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::factory()->create([
+        $jojo = User::factory()->create([
             'name' => 'Jojo',
             'email' => 'jo@jo2.ch'
         ]);
-        $competition = Competition::create([
-            'name' => 'Championnat des légendes'
-        ]);
+        $xaxa = User::factory()->create([ 'name' => 'Xaxa', ]);
+        $titi = User::factory()->create([ 'name' => 'Titi', ]);
+        $competition = Competition::create([ 'name' => 'Championnat des légendes' ]);
         $tournament = Tournament::create([
             'competition_id' => $competition->id,
-            'host_id' => $user->id,
+            'host_id' => $xaxa->id,
             'place' => 'Collège des Crêtets',
-            'start_date' => now()
+            'start_date' => '2022-01-07'
         ]);
-        Game::create([
-            'tournament_id' => $tournament->id,
-            'player_1_id' => $user->id,
-            'player_2_id' => User::factory()->create()->id
+        $tournament->games()->createMany([
+            [
+                'player_1_id' => $titi->id,
+                'player_1_score' => 11,
+                'player_2_id' => $jojo->id,
+                'player_2_score' => 8,
+            ],
+            [
+                'player_1_id' => $xaxa->id,
+                'player_2_id' => $titi->id,
+            ]
         ]);
     }
 }
