@@ -23,7 +23,7 @@ class Tournament extends Model
     }
 
     public function participants() {
-        return $this->belongsToMany(User::class, 'participants');
+        return $this->belongsToMany(User::class, 'participants')->using(Participant::class);
     }
 
     public function host() {
