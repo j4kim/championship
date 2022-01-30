@@ -5483,8 +5483,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('upload', function () {
+  var initialArray = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   return {
-    images: [],
+    images: initialArray,
     showWidget: function showWidget() {
       var _this = this;
 

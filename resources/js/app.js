@@ -5,8 +5,8 @@ import Alpine from 'alpinejs';
 import '@fortawesome/fontawesome-free/css/solid.css'
 import '@fortawesome/fontawesome-free/css/fontawesome.css'
 
-Alpine.data('upload', () => ({
-    images: [],
+Alpine.data('upload', (initialArray = []) => ({
+    images: initialArray,
 
     showWidget() {
         cloudinary.openUploadWidget({

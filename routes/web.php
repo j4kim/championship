@@ -42,7 +42,7 @@ Route::get('/tournaments/{tournament}/edit', function (Tournament $tournament) {
 })->middleware(['auth']);
 
 Route::put('/tournaments/{tournament}', function (Tournament $tournament, Request $request) {
-    $tournament->pictures = array_merge($tournament->pictures, json_decode($request->pictures));
+    $tournament->pictures = json_decode($request->pictures);
     $tournament->save();
     return redirect("tournaments/$tournament->id");
 })->middleware(['auth']);

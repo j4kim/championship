@@ -12,7 +12,7 @@
             <form action="{{ url("/tournaments/$id") }}" method="POST">
                 @method('PUT')
                 @csrf
-                <div x-data="upload">
+                <div x-data="upload({{ Illuminate\Support\Js::from($pictures) }})">
                     <template x-for="image in images">
                         <img x-bind:src="image.thumbnail_url" class="inline ml-2 mb-2">
                     </template>
