@@ -31,6 +31,10 @@ Alpine.data('upload', (initialArray = []) => ({
                 this.images.push(result.info)
             }
         });
+    },
+
+    remove({ public_id }) {
+        this.images = this.images.filter(i => i.public_id !== public_id)
     }
 }))
 

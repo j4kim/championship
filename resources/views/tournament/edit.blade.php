@@ -13,14 +13,19 @@
                 @method('PUT')
                 @csrf
                 <div x-data="upload({{ Illuminate\Support\Js::from($pictures) }})">
-                    <template x-for="image in images">
-                        <img x-bind:src="image.thumbnail_url" class="inline ml-2 mb-2">
-                    </template>
-                    <div>
-                        <button type="button" x-on:click="showWidget" class="py-2 px-6 font-semibold rounded-md border border-indigo-600 text-indigo-600">
-                            <i class="fas fa-camera mr-2"></i> Ajouter photo
-                        </button>
+                    <div class="flex">
+                        <template x-for="image in images">
+                            <div class="mr-4 relative">
+                                <button x-on:click="remove(image)" type="button" class="w-4 h-4 bg-white absolute flex justify-center items-center rounded-full -left-1 -top-1 text-indigo-600 hover:bg-red-600 hover:text-white">
+                                    <i class="fas fa-times text-xs"></i>
+                                </button>
+                                <img x-bind:src="image.thumbnail_url" class="inline mb-3"/>
+                            </div>
+                        </template>
                     </div>
+                    <button type="button" x-on:click="showWidget" class="py-2 px-6 font-semibold rounded-md border border-indigo-600 text-indigo-600">
+                        <i class="fas fa-camera mr-2"></i> Ajouter photo
+                    </button>
                     <input type="hidden" name="pictures" x-bind:value="JSON.stringify(images)">
                 </div>
                 <hr class="my-4">

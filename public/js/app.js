@@ -5508,6 +5508,12 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('upload', function () {
           _this.images.push(result.info);
         }
       });
+    },
+    remove: function remove(_ref) {
+      var public_id = _ref.public_id;
+      this.images = this.images.filter(function (i) {
+        return i.public_id !== public_id;
+      });
     }
   };
 });
