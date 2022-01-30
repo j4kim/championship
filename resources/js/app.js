@@ -5,10 +5,10 @@ import Alpine from 'alpinejs';
 import '@fortawesome/fontawesome-free/css/solid.css'
 import '@fortawesome/fontawesome-free/css/fontawesome.css'
 
-Alpine.data('pictures', () => ({
+Alpine.data('upload', () => ({
     images: [],
 
-    showUploadWidget() {
+    showWidget() {
         cloudinary.openUploadWidget({
             cloudName: "championship",
             uploadPreset: "legends",

@@ -5482,10 +5482,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('pictures', function () {
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('upload', function () {
   return {
     images: [],
-    showUploadWidget: function showUploadWidget() {
+    showWidget: function showWidget() {
       var _this = this;
 
       cloudinary.openUploadWidget({

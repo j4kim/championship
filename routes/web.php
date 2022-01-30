@@ -2,6 +2,7 @@
 
 use App\Models\Competition;
 use App\Models\Tournament;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,16 @@ Route::get('/competitions/{competition}', function (Competition $competition) {
 
 Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
     return view("tournament", $tournament->load('competition', 'games.player1', 'games.player2'));
+})->middleware(['auth']);
+
+Route::get('/tournaments/{tournament}/edit', function (Tournament $tournament) {
+    return view("tournament.edit", $tournament);
+})->middleware(['auth']);
+
+Route::put('/tournaments/{tournament}', function (Tournament $tournament, Request $request) {
+    $tournament->pictures = array_merge($tournament->pictures, json_decode($request->pictures));
+    $tournament->save();
+    return redirect("tournaments/$tournament->id");
 })->middleware(['auth']);
 
 require __DIR__.'/auth.php';
