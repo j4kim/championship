@@ -13,6 +13,11 @@
                 @method('PUT')
                 @csrf
 
+                <div class="mb-8">
+                    <span class="text-gray-700">Spot</span>
+                    <input type="text" class="block w-full md:w-1/3 mt-1" name="spot" value="{{ $spot }}">
+                </div>
+
                 <div class="mb-8" x-data="{ host_id: {{ $host_id }}}">
                     <span class="text-gray-700">Hôte</span>
                     <select class="block w-full md:w-1/3 mt-1" name="host_id" x-model="host_id">
@@ -24,7 +29,17 @@
                     </select>
                 </div>
 
-                <div x-data="upload({{ Illuminate\Support\Js::from($pictures) }})">
+                <div class="mb-8" x-data="{ menu: {{ Js::from($menu) }} }">
+                    <span class="text-gray-700">Menu</span>
+                    <textarea type="text" class="block w-full md:w-2/3 mt-1" name="menu" x-model="menu"></textarea>
+                </div>
+
+                <div class="mb-8" x-data="{ conditions: {{ Js::from($conditions) }} }">
+                    <span class="text-gray-700">Conditions</span>
+                    <textarea type="text" class="block w-full md:w-2/3 mt-1" name="conditions" x-model="conditions"></textarea>
+                </div>
+
+                <div x-data="upload({{ Js::from($pictures) }})">
                     <div class="flex">
                         <template x-for="image in images">
                             <div class="mr-4 relative">
@@ -36,7 +51,7 @@
                         </template>
                     </div>
                     <button type="button" x-on:click="showWidget" class="py-2 px-6 font-semibold rounded-md border border-indigo-600 text-indigo-600">
-                        <i class="fas fa-camera mr-2"></i> Ajouter photo
+                        <i class="fas fa-camera mr-2"></i> Ajouter photos
                     </button>
                     <input type="hidden" name="pictures" x-bind:value="JSON.stringify(images)">
                 </div>

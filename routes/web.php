@@ -44,7 +44,9 @@ Route::get('/tournaments/{tournament}/edit', function (Tournament $tournament) {
 
 Route::put('/tournaments/{tournament}', function (Tournament $tournament, Request $request) {
     $tournament->pictures = json_decode($request->pictures);
+    $tournament->spot = $request->spot;
     $tournament->host_id = $request->host_id;
+    $tournament->menu = $request->menu;
     $tournament->save();
     return redirect("tournaments/$tournament->id");
 })->middleware(['auth']);
