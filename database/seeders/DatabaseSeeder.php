@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             'menu' => 'Pâtes au poulet et petits pois, cake à la patate douce',
             'conditions' => "Verglas sur la table et sur le sol, conditions extrêmes.\nMétéo: neige, froid."
         ]);
+        $tournament->participants()->attach([1, 2, 3]);
         $tournament->games()->createMany([
             [
                 'player_1_id' => $titi->id,
