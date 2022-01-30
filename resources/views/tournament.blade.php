@@ -15,10 +15,12 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 md:grid gap-4 grid-cols-3">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 md:grid gap-4 grid-cols-3">
             <div>
                 @foreach ($pictures as $picture)
-                    <img src="{{ $picture['secure_url'] }}">
+                    <a href="{{ $picture['secure_url'] }}">
+                        <img src="{{ $picture['secure_url'] }}" class="rounded-lg w-full mb-2 max-h-[40vh] object-cover">
+                    </a>
                 @endforeach
                 <x-attribute label="Spot" :value="$spot"/>
                 <x-attribute label="Hôte" :value="$host['name']"/>
