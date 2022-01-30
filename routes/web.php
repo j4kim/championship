@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Competition;
+use App\Models\Game;
 use App\Models\Tournament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,10 @@ Route::put('/tournaments/{tournament}', function (Tournament $tournament, Reques
     $tournament->menu = $request->menu;
     $tournament->save();
     return redirect("tournaments/$tournament->id");
+})->middleware(['auth']);
+
+Route::get('/games/{game}', function (Game $game) {
+    return view("game", $game->load('tournament'));
 })->middleware(['auth']);
 
 require __DIR__.'/auth.php';

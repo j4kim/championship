@@ -11,6 +11,9 @@ class Game extends Model
 
     protected $appends = ['player_1_wins', 'player_2_wins'];
 
+    public function tournament() {
+        return $this->belongsTo(Tournament::class);
+    }
 
     public function player1() {
         return $this->hasOne(User::class, 'id', 'player_1_id');
