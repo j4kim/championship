@@ -12,6 +12,18 @@
             <form action="{{ url("/tournaments/$id") }}" method="POST">
                 @method('PUT')
                 @csrf
+
+                <div class="mb-8" x-data="{ host_id: {{ $host_id }}}">
+                    <span class="text-gray-700">Hôte</span>
+                    <select class="block w-full md:w-1/3 mt-1" name="host_id" x-model="host_id">
+                        @foreach ($participants as $participant)
+                            <option value="{{ $participant['id'] }}">
+                                {{ $participant['name'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div x-data="upload({{ Illuminate\Support\Js::from($pictures) }})">
                     <div class="flex">
                         <template x-for="image in images">

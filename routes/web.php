@@ -38,11 +38,13 @@ Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
 })->middleware(['auth']);
 
 Route::get('/tournaments/{tournament}/edit', function (Tournament $tournament) {
+    $tournament->load('participants');
     return view("tournament.edit", $tournament);
 })->middleware(['auth']);
 
 Route::put('/tournaments/{tournament}', function (Tournament $tournament, Request $request) {
     $tournament->pictures = json_decode($request->pictures);
+    $tournament->host_id = $request->host_id;
     $tournament->save();
     return redirect("tournaments/$tournament->id");
 })->middleware(['auth']);
