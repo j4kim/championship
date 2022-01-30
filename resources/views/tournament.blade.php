@@ -37,7 +37,7 @@
                     Liste des matches
                 </div>
                 @foreach ($games as $game)
-                    <x-game :game="$game"/>
+                    <x-game-summary :game="$game"/>
                 @endforeach
             </div>
         </div>
