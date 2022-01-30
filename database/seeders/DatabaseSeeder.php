@@ -28,7 +28,9 @@ class DatabaseSeeder extends Seeder
             'competition_id' => $competition->id,
             'host_id' => $xaxa->id,
             'spot' => 'Collège des Crêtets',
-            'start_date' => '2022-01-07'
+            'start_date' => '2022-01-07',
+            'menu' => 'Pâtes au poulet et petits pois, cake à la patate douce',
+            'conditions' => "Verglas sur la table et sur le sol, conditions extrêmes.\nMétéo: neige, froid."
         ]);
         $tournament->games()->createMany([
             [
