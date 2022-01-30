@@ -5480,30 +5480,37 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
-window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('pictures', function () {
+  return {
+    images: [],
+    showUploadWidget: function showUploadWidget() {
+      var _this = this;
+
+      cloudinary.openUploadWidget({
+        cloudName: "championship",
+        uploadPreset: "legends",
+        sources: ["camera", "local"],
+        defaultSource: "local",
+        styles: {
+          palette: {
+            tabIcon: "#4F46E5",
+            link: "#4F46E5",
+            inProgress: "#4F46E5"
+          }
+        }
+      }, function (err, result) {
+        if (!err && result.event === 'success') {
+          console.log("new image", result.info);
+
+          _this.images.push(result.info);
+        }
+      });
+    }
+  };
+});
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
-
-
-
-window.showUploadWidget = function () {
-  cloudinary.openUploadWidget({
-    cloudName: "championship",
-    uploadPreset: "legends",
-    sources: ["camera", "local"],
-    defaultSource: "camera",
-    styles: {
-      palette: {
-        tabIcon: "#4F46E5",
-        link: "#4F46E5",
-        inProgress: "#4F46E5"
-      }
-    }
-  }, function (err, result) {
-    if (!err && result.event === 'success') {
-      console.log(result.info);
-    }
-  });
-};
 
 /***/ }),
 

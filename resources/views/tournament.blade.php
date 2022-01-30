@@ -12,7 +12,10 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="md:flex flex-row">
-                <div x-data class="md:basis-1/3">
+                <div x-data="pictures" class="md:basis-1/3">
+                    <template x-for="image in images">
+                        <img x-bind:src="image.thumbnail_url">
+                    </template>
                     Photos / conditions / menu ici
                     <button x-on:click="showUploadWidget" class="py-2 px-6 font-semibold rounded-md bg-indigo-600 text-white">
                         <i class="fas fa-camera mr-2"></i> Ajouter photo
