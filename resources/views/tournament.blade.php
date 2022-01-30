@@ -27,20 +27,17 @@
                 <x-attribute label="Menu" :value="$menu"/>
                 <x-attribute label="Conditions" :value="$conditions"/>
             </div>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white shadow-sm sm:rounded-lg">
+                <div class="p-6 text-xs text-gray-600 mb-2 border-b border-gray-200">
                     Classement ici
                 </div>
             </div>
             <div>
+                <div class="text-xs text-gray-600 mb-2">
+                    Liste des matches
+                </div>
                 @foreach ($games as $game)
-                    <div>
-                        {{ $game['player1']['name'] }}
-                        {{ $game['player_1_score'] }}
-                        -
-                        {{ $game['player_2_score'] }}
-                        {{ $game['player2']['name'] }}
-                    </div>
+                    <x-game :game="$game"/>
                 @endforeach
             </div>
         </div>
