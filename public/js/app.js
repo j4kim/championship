@@ -5485,6 +5485,26 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 
 
 
+window.showUploadWidget = function () {
+  cloudinary.openUploadWidget({
+    cloudName: "championship",
+    uploadPreset: "legends",
+    sources: ["camera", "local"],
+    defaultSource: "camera",
+    styles: {
+      palette: {
+        tabIcon: "#4F46E5",
+        link: "#4F46E5",
+        inProgress: "#4F46E5"
+      }
+    }
+  }, function (err, result) {
+    if (!err && result.event === 'success') {
+      console.log(result.info);
+    }
+  });
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

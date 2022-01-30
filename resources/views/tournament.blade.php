@@ -12,7 +12,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="md:flex flex-row">
-                <div class="md:basis-1/3">Photos / conditions / menu ici</div>
+                <div x-data class="md:basis-1/3">
+                    Photos / conditions / menu ici
+                    <button x-on:click="showUploadWidget" class="py-2 px-6 font-semibold rounded-md bg-indigo-600 text-white">
+                        <i class="fas fa-camera mr-2"></i> Ajouter photo
+                    </button>
+                </div>
                 <div class="md:basis-2/3">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
