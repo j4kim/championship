@@ -20,14 +20,10 @@
                 @foreach ($pictures as $picture)
                     <img src="{{ $picture['secure_url'] }}">
                 @endforeach
-                <dt>Spot</dt>
-                <dd>{{ $spot }}</dd>
-                <dt>Hôte</dt>
-                <dd>{{ $host['name'] }}</dd>
-                <dt>Menu</dt>
-                <dd>{{ $menu }}</dd>
-                <dt>Conditions</dt>
-                <dd>{{ $conditions }}</dd>
+                <x-attribute label="Spot" :value="$spot"/>
+                <x-attribute label="Hôte" :value="$host['name']"/>
+                <x-attribute label="Menu" :value="$menu"/>
+                <x-attribute label="Conditions" :value="$conditions"/>
             </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
