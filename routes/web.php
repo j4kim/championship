@@ -34,7 +34,7 @@ Route::get('/competitions/{competition}', function (Competition $competition) {
 })->middleware(['auth']);
 
 Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
-    return view("tournament", $tournament->load('competition', 'games.player1', 'games.player2'));
+    return view("tournament", $tournament->load('competition', 'games.player1', 'games.player2', 'host'));
 })->middleware(['auth']);
 
 Route::get('/tournaments/{tournament}/edit', function (Tournament $tournament) {
