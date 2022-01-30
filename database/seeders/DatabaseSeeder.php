@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $tournament = Tournament::create([
             'competition_id' => $competition->id,
             'host_id' => $xaxa->id,
-            'place' => 'Collège des Crêtets',
+            'spot' => 'Collège des Crêtets',
             'start_date' => '2022-01-07'
         ]);
         $tournament->games()->createMany([

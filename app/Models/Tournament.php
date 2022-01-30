@@ -11,6 +11,7 @@ class Tournament extends Model
 
     protected $casts = [
         'start_date' => 'date:d.m.Y',
+        'pictures' => 'array'
     ];
 
     public function competition() {

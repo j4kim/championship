@@ -20,7 +20,8 @@ class CreateTournamentsTable extends Migration
             $table->date('start_date')->nullable()->useCurrent();
             $table->date('end_date')->nullable();
             $table->foreignId('host_id')->constrained('users');
-            $table->string('place')->nullable();
+            $table->string('spot')->nullable();
+            $table->json('pictures')->default('[]');
         });
     }
 
