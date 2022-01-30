@@ -35,12 +35,14 @@ class DatabaseSeeder extends Seeder
         $tournament->participants()->attach([1, 2, 3]);
         $tournament->games()->createMany([
             [
+                'number' => 1,
                 'player_1_id' => $titi->id,
                 'player_1_score' => 11,
                 'player_2_id' => $jojo->id,
                 'player_2_score' => 8,
             ],
             [
+                'number' => 2,
                 'player_1_id' => $xaxa->id,
                 'player_2_id' => $titi->id,
             ]
