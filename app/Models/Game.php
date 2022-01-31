@@ -16,11 +16,11 @@ class Game extends Model
     }
 
     public function player1() {
-        return $this->hasOne(User::class, 'id', 'player_1_id');
+        return $this->hasOne(Participant::class, 'id', 'player_1_id');
     }
 
     public function player2() {
-        return $this->hasOne(User::class, 'id', 'player_2_id');
+        return $this->hasOne(Participant::class, 'id', 'player_2_id');
     }
 
     public function getPlayer1WinsAttribute() {

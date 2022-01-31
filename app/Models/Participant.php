@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
 
-class Participant extends Pivot
+class Participant extends Model
 {
 
     protected $appends = ['wins', 'points', 'gamesPlayed'];
+
+    public $timestamps = false;
 
     public function user() {
         return $this->belongsTo(User::class);
