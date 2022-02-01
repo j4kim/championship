@@ -9,6 +9,10 @@ class Game extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'played' => 'boolean'
+    ];
+
     protected $appends = ['player_1_wins', 'player_2_wins'];
 
     protected $fillable = ['player_1_id', 'player_2_id'];
