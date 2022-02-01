@@ -22,7 +22,7 @@
                 <td class="p-1">{{ $participant['gamesPlayed'] }}</td>
                 <td class="p-1">{{ $participant['wins'] }}</td>
                 <td class="p-1">{{ $participant['points'] }}</td>
-                <td class="p-1 font-bold">
+                <td class="p-1">
                     +{{ $participant['champPoints'] }}
                 </td>
             </tr>
