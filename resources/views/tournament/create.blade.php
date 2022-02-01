@@ -9,29 +9,33 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form action="{{ url("/competitions/$competition->id/tournament") }}" method="POST">
+            <form
+                action="{{ url("/competitions/$competition->id/tournament") }}"
+                method="POST"
+                x-data="{ users: {{ Js::from($users) }}, participant_ids: [] }"
+            >
                 @csrf
 
                 <div class="mb-8">
                     <span class="text-gray-700">Participants</span>
-                    <select class="block w-full md:w-1/3 mt-1" name="user_ids[]" multiple required>
-                        @foreach ($users as $user)
-                            <option value="{{ $user['id'] }}">
-                                {{ $user['name'] }}
-                            </option>
-                        @endforeach
+                    <select
+                        class="block w-full md:w-1/3 mt-1"
+                        name="user_ids[]"
+                        multiple required
+                        x-model="participant_ids"
+                    >
+                        <template x-for="user in users">
+                            <option x-bind:value="user.id" x-text="user.name"></option>
+                        </template>
                     </select>
                 </div>
 
                 <div class="mb-8">
                     <span class="text-gray-700">Hôte</span>
                     <select class="block w-full md:w-1/3 mt-1" name="host_id" required>
-                        <option value=""></option>
-                        @foreach ($users as $user)
-                            <option value="{{ $user['id'] }}">
-                                {{ $user['name'] }}
-                            </option>
-                        @endforeach
+                        <template x-for="user in users">
+                            <option x-bind:value="user.id" x-text="user.name"></option>
+                        </template>
                     </select>
                 </div>
 
