@@ -33,7 +33,7 @@
                     Classement
                 </h4>
                 <div class="p-4">
-                    <x-ranking :participants="$participants"/>
+                    <x-ranking :participants="$ranking"/>
                 </div>
             </div>
             <div>

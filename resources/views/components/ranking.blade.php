@@ -15,14 +15,16 @@
             <tr class="border-b border-gray-200">
                 <td class="p-1">
                     <span class="mr-1 text-xs font-bold">
-                        {{ $loop->iteration }}
+                        {{ $participant['rank'] }}
                     </span>
                     {{ $participant['user']['name'] }}
                 </td>
                 <td class="p-1">{{ $participant['gamesPlayed'] }}</td>
                 <td class="p-1">{{ $participant['wins'] }}</td>
                 <td class="p-1">{{ $participant['points'] }}</td>
-                <td class="p-1"></td>
+                <td class="p-1 font-bold">
+                    {{ $participant['champPoints'] > 0 ? '+' : '' }}{{ $participant['champPoints'] }}
+                </td>
             </tr>
         @endforeach
     </tbody>

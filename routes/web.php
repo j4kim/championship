@@ -42,8 +42,9 @@ Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
         'participants.tournament.games', 'participants.user'
     );
     foreach ($tournament->participants as $participant) {
-        $participant->append('wins', 'points', 'gamesPlayed');
+        $participant->append('wins', 'points', 'gamesPlayed', 'rankingScore');
     }
+    $tournament->append('ranking');
     return view("tournament", $tournament);
 })->middleware(['auth']);
 
