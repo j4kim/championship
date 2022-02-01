@@ -22,14 +22,14 @@
                     score2: {{ $player_2_score }}
                 }">
                     <div class="w-1/2 flex flex-col items-center">
-                        <h2>{{ $player1['user']['name'] }}</h2>
+                        <h2 class="font-bold">{{ $player1['user']['name'] }}</h2>
                         <input class="my-4 text-3xl w-24" min="0" type="number" name="player_1_score" x-model="score1">
                         <button type="button" x-on:click="score1++" class="bg-indigo-600 rounded-full w-16 h-16 text-white">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
                     <div class="w-1/2 flex flex-col items-center">
-                        <h2>{{ $player2['user']['name'] }}</h2>
+                        <h2 class="font-bold">{{ $player2['user']['name'] }}</h2>
                         <input class="my-4 text-3xl w-24" min="0" type="number" name="player_2_score" x-model="score2">
                         <button type="button" x-on:click="score2++" class="bg-indigo-600 rounded-full w-16 h-16 text-white">
                             <i class="fas fa-plus"></i>
