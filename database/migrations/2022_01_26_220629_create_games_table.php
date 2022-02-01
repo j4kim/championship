@@ -16,9 +16,7 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('number')->default(1);
             $table->foreignId('tournament_id')->constrained();
-            $table->unique(['tournament_id', 'number']);
             $table->foreignId('player_1_id')->constrained('participants');
             $table->foreignId('player_2_id')->constrained('participants');
             $table->integer('player_1_score')->default(0);

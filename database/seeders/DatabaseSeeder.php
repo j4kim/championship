@@ -39,7 +39,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $tournament->games()->createMany([
             [
-                'number' => 1,
                 'player_1_id' => $titi->id,
                 'player_1_score' => 11,
                 'player_2_id' => $jojo->id,
@@ -47,7 +46,6 @@ class DatabaseSeeder extends Seeder
                 'played' => true
             ],
             [
-                'number' => 2,
                 'player_1_id' => $xaxa->id,
                 'player_2_id' => $titi->id,
             ]

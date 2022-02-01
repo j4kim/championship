@@ -6,7 +6,7 @@
                     Tournoi #{{ $tournament['id'] }} du {{ $tournament['start_date'] }}
                 </a>
                 <i class="fas fa-angle-right text-sm mx-2"></i>
-                Match n°{{ $number }}
+                Match
             </h2>
         </div>
     </x-slot>
