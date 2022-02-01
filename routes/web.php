@@ -45,6 +45,9 @@ Route::post('/competitions/{competition}/tournament', function (Competition $com
         'start_date' => now(),
         'host_id' => $request->host_id
     ]);
+    $tournament->participants()->createMany(
+        collect($request->user_ids)->map(fn($id) => ['user_id' => $id])
+    );
     return redirect("tournaments/$tournament->id");
 })->middleware(['auth']);
 

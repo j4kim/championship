@@ -13,6 +13,17 @@
                 @csrf
 
                 <div class="mb-8">
+                    <span class="text-gray-700">Participants</span>
+                    <select class="block w-full md:w-1/3 mt-1" name="user_ids[]" multiple>
+                        @foreach ($users as $user)
+                            <option value="{{ $user['id'] }}">
+                                {{ $user['name'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-8">
                     <span class="text-gray-700">Hôte</span>
                     <select class="block w-full md:w-1/3 mt-1" name="host_id">
                         <option value=""></option>
