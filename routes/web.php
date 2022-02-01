@@ -66,4 +66,11 @@ Route::get('/games/{game}', function (Game $game) {
     return view("game", $game->load('tournament'));
 })->middleware(['auth']);
 
+
+Route::put('/games/{game}', function (Game $game, Request $request) {
+    $game->played = $request->played;
+    $game->save();
+    return redirect("tournaments/" . $game->tournament->id);
+})->middleware(['auth']);
+
 require __DIR__.'/auth.php';
