@@ -17,14 +17,23 @@
                 @method('PUT')
                 @csrf
 
-                <div class="mb-8 md:px-60 flex text-center text-2xl">
-                    <div class="w-1/2">
-                        <h2 class="mb-4">{{ $player1['user']['name'] }}</h2>
-                        <input class="text-3xl w-24" min="0" type="number" name="player_1_score" value="{{ $player_1_score }}">
+                <div class="mb-12 md:px-60 flex text-2xl" x-data="{
+                    score1: {{ $player_1_score }},
+                    score2: {{ $player_2_score }}
+                }">
+                    <div class="w-1/2 flex flex-col items-center">
+                        <h2>{{ $player1['user']['name'] }}</h2>
+                        <input class="my-4 text-3xl w-24" min="0" type="number" name="player_1_score" x-model="score1">
+                        <button type="button" x-on:click="score1++" class="bg-indigo-600 rounded-full w-16 h-16 text-white">
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
-                    <div class="w-1/2">
-                        <h2 class="mb-4">{{ $player2['user']['name'] }}</h2>
-                        <input class="text-3xl w-24" min="0" type="number" name="player_2_score" value="{{ $player_2_score }}">
+                    <div class="w-1/2 flex flex-col items-center">
+                        <h2>{{ $player2['user']['name'] }}</h2>
+                        <input class="my-4 text-3xl w-24" min="0" type="number" name="player_2_score" x-model="score2">
+                        <button type="button" x-on:click="score2++" class="bg-indigo-600 rounded-full w-16 h-16 text-white">
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
                 </div>
 
