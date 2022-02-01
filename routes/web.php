@@ -66,6 +66,13 @@ Route::get('/games/{game}', function (Game $game) {
     return view("game", $game->load('tournament', 'player1.user', 'player2.user'));
 })->middleware(['auth']);
 
+Route::post('/tournaments/{tournament}/game', function (Tournament $tournament, Request $request) {
+    $game = $tournament->games()->create([
+        'player_1_id' => $request->player_1_id,
+        'player_2_id' => $request->player_2_id,
+    ]);
+    return redirect("games/$game->id");
+})->middleware(['auth']);
 
 Route::put('/games/{game}', function (Game $game, Request $request) {
     if ($request->delete) {

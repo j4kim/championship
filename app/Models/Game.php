@@ -11,6 +11,8 @@ class Game extends Model
 
     protected $appends = ['player_1_wins', 'player_2_wins'];
 
+    protected $fillable = ['player_1_id', 'player_2_id'];
+
     public function tournament() {
         return $this->belongsTo(Tournament::class);
     }
