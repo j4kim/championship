@@ -48,7 +48,7 @@ Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
 })->middleware(['auth']);
 
 Route::get('/tournaments/{tournament}/edit', function (Tournament $tournament) {
-    $tournament->load('participants');
+    $tournament->load('participants.user');
     return view("tournament.edit", $tournament);
 })->middleware(['auth']);
 
