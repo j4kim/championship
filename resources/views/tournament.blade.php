@@ -43,10 +43,12 @@
                 @foreach ($games as $game)
                     <x-game-summary :game="$game"/>
                 @endforeach
-                <div class="text-xs text-gray-600 mb-2">
-                    Nouveau match
-                </div>
-                <x-new-game-form :tournament-id="$id" :participants="$participants"/>
+                @if (!$finished)
+                    <div class="text-xs text-gray-600 mb-2">
+                        Nouveau match
+                    </div>
+                    <x-new-game-form :tournament-id="$id" :participants="$participants"/>
+                @endif
             </div>
         </div>
     </div>
