@@ -15,20 +15,22 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 md:grid gap-4 grid-cols-3">
-            <div class="mb-4">
-                @foreach ($pictures as $picture)
-                    <a href="{{ $picture['secure_url'] }}">
-                        <img src="{{ $picture['secure_url'] }}" class="rounded-lg w-full mb-2 max-h-[40vh] object-cover">
+    <div class="p-4 sm:p-6 md:p-12">
+        <div class="max-w-7xl mx-auto lg:px-8 md:grid gap-4 lg:gap-12 grid-cols-3 items-start">
+            <div class="mb-4 md:mb-0 row-span-2">
+                <div class="grid gap-4 grid-cols-3 mb-4">
+                    @foreach ($pictures as $picture)
+                    <a href="{{ $picture['secure_url'] }}" class="col-span-{{ $loop->first ? 3 : 1 }}">
+                        <img src="{{ $picture['secure_url'] }}" class="rounded-lg w-full max-h-[40vh] object-cover {{ !$loop->first ? 'aspect-square' : '' }}">
                     </a>
-                @endforeach
+                    @endforeach
+                </div>
                 <x-attribute label="Hôte" :value="$host['name']"/>
                 <x-attribute label="Spot" :value="$spot"/>
                 <x-attribute label="Menu" :value="$menu"/>
                 <x-attribute label="Conditions" :value="$conditions"/>
             </div>
-            <div class="bg-white shadow-sm rounded-lg mb-4">
+            <div class="mb-4 md:mb-0 bg-white shadow-sm rounded-lg col-span-2">
                 <h4 class="p-4 text-xs text-gray-600 border-b border-gray-200">
                     Classement
                 </h4>
@@ -36,7 +38,7 @@
                     <x-ranking :participants="$ranking"/>
                 </div>
             </div>
-            <div>
+            <div class="col-span-2 mb-4 md:mb-0">
                 <div class="text-xs text-gray-600 mb-2">
                     Liste des matches
                 </div>
