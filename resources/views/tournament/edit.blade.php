@@ -13,11 +13,6 @@
                 @method('PUT')
                 @csrf
 
-                <div class="mb-8">
-                    <span class="text-gray-700">Spot</span>
-                    <input type="text" class="block w-full md:w-1/3 mt-1" name="spot" value="{{ $spot }}">
-                </div>
-
                 <div class="mb-8" x-data="{ host_id: {{ $host_id }}}">
                     <span class="text-gray-700">Hôte</span>
                     <select class="block w-full md:w-1/3 mt-1" name="host_id" x-model="host_id">
@@ -27,6 +22,11 @@
                             </option>
                         @endforeach
                     </select>
+                </div>
+
+                <div class="mb-8">
+                    <span class="text-gray-700">Spot</span>
+                    <input type="text" class="block w-full md:w-1/3 mt-1" name="spot" value="{{ $spot }}">
                 </div>
 
                 <div class="mb-8" x-data="{ menu: {{ Js::from($menu) }} }">

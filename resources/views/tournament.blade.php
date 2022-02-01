@@ -23,8 +23,8 @@
                         <img src="{{ $picture['secure_url'] }}" class="rounded-lg w-full mb-2 max-h-[40vh] object-cover">
                     </a>
                 @endforeach
-                <x-attribute label="Spot" :value="$spot"/>
                 <x-attribute label="Hôte" :value="$host['name']"/>
+                <x-attribute label="Spot" :value="$spot"/>
                 <x-attribute label="Menu" :value="$menu"/>
                 <x-attribute label="Conditions" :value="$conditions"/>
             </div>
