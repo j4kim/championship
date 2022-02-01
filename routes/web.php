@@ -63,12 +63,14 @@ Route::put('/tournaments/{tournament}', function (Tournament $tournament, Reques
 })->middleware(['auth']);
 
 Route::get('/games/{game}', function (Game $game) {
-    return view("game", $game->load('tournament'));
+    return view("game", $game->load('tournament', 'player1.user', 'player2.user'));
 })->middleware(['auth']);
 
 
 Route::put('/games/{game}', function (Game $game, Request $request) {
     $game->played = $request->played;
+    $game->player_1_score = $request->player_1_score;
+    $game->player_2_score = $request->player_2_score;
     $game->save();
     return redirect("tournaments/" . $game->tournament->id);
 })->middleware(['auth']);

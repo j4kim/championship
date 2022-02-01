@@ -11,11 +11,22 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-24">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form action="{{ url("/games/$id") }}" method="POST">
                 @method('PUT')
                 @csrf
+
+                <div class="mb-8 md:px-60 flex text-center text-2xl">
+                    <div class="w-1/2">
+                        <h2 class="mb-4">{{ $player1['user']['name'] }}</h2>
+                        <input class="text-3xl w-24" min="0" type="number" name="player_1_score" value="{{ $player_1_score }}">
+                    </div>
+                    <div class="w-1/2">
+                        <h2 class="mb-4">{{ $player2['user']['name'] }}</h2>
+                        <input class="text-3xl w-24" min="0" type="number" name="player_2_score" value="{{ $player_2_score }}">
+                    </div>
+                </div>
 
                 <div class="mb-8">
                     <label class="inline-flex items-center">
