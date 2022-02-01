@@ -13,11 +13,16 @@
 
     <div class="py-24">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form action="{{ url("/games/$id") }}" method="POST" x-data="{
-                score1: {{ $player_1_score }},
-                score2: {{ $player_2_score }},
-                played: {{ Js::from($played) }}
-            }">
+            <form
+                action="{{ url("/games/$id") }}"
+                method="POST"
+                x-data="{
+                    score1: {{ $player_1_score }},
+                    score2: {{ $player_2_score }},
+                    played: {{ Js::from($played) }}
+                }"
+                x-effect="if (Math.max(score1, score2) > 10 && Math.abs(score1 - score2) > 1) { played = true }"
+            >
                 @method('PUT')
                 @csrf
 
