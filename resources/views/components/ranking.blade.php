@@ -1,6 +1,6 @@
 @props(['participants'])
 
-<table class="w-full -m-1">
+<table class="w-full">
     <thead>
         <tr class="text-left text-xs">
             <th class="p-1 w-3/5">Player</th>
