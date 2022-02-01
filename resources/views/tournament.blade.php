@@ -31,10 +31,10 @@
                 <x-attribute label="Conditions" :value="$conditions"/>
             </div>
             <div class="mb-4 md:mb-0 bg-white shadow-sm rounded-lg col-span-2">
-                <h4 class="p-4 text-xs text-gray-600 border-b border-gray-200">
+                <h4 class="p-4 md:p-6 text-xs text-gray-600 border-b border-gray-200">
                     Classement
                 </h4>
-                <div class="p-4">
+                <div class="p-4 md:p-6">
                     <x-ranking :participants="$ranking"/>
                 </div>
             </div>
