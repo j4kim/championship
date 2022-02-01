@@ -27,9 +27,12 @@
                 <x-attribute label="Menu" :value="$menu"/>
                 <x-attribute label="Conditions" :value="$conditions"/>
             </div>
-            <div class="bg-white shadow-sm sm:rounded-lg">
-                <div class="p-6 text-xs text-gray-600 mb-2 border-b border-gray-200">
-                    Classement ici
+            <div class="bg-white shadow-sm rounded-lg my-4">
+                <h4 class="p-4 text-xs text-gray-600 border-b border-gray-200">
+                    Classement
+                </h4>
+                <div class="p-4">
+                    <x-ranking :participants="$participants"/>
                 </div>
             </div>
             <div>
