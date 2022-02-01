@@ -42,6 +42,12 @@ class Tournament extends Model
                     $current->rank = $previous->rank;
                 }
             }
+            $current->champPoints = match ($current->rank) {
+                1 => 6,
+                2 => 3,
+                3 => 1,
+                default => 0
+            };
         }
         return $sorted;
     }
