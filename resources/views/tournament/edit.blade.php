@@ -17,7 +17,7 @@
                     <span class="text-gray-700">Hôte</span>
                     <select class="block w-full md:w-1/3 mt-1" name="host_id" x-model="host_id">
                         @foreach ($participants as $participant)
-                            <option value="{{ $participant['id'] }}">
+                            <option value="{{ $participant['user']['id'] }}">
                                 {{ $participant['user']['name'] }}
                             </option>
                         @endforeach
