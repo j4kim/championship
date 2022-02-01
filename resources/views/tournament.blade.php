@@ -17,7 +17,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 md:grid gap-4 grid-cols-3">
-            <div>
+            <div class="mb-4">
                 @foreach ($pictures as $picture)
                     <a href="{{ $picture['secure_url'] }}">
                         <img src="{{ $picture['secure_url'] }}" class="rounded-lg w-full mb-2 max-h-[40vh] object-cover">
@@ -28,7 +28,7 @@
                 <x-attribute label="Menu" :value="$menu"/>
                 <x-attribute label="Conditions" :value="$conditions"/>
             </div>
-            <div class="bg-white shadow-sm rounded-lg my-4">
+            <div class="bg-white shadow-sm rounded-lg mb-4">
                 <h4 class="p-4 text-xs text-gray-600 border-b border-gray-200">
                     Classement
                 </h4>
