@@ -42,4 +42,18 @@ class Participant extends Model
     public function getGamesPlayedAttribute() {
         return $this->games->count();
     }
+
+    public function getPointsAgainstAttribute() {
+        return $this->games->sum(fn($g) =>
+            $g->player_1_id === $this->id ? $g->player_2_score : $g->player_1_score
+        );
+    }
+
+    public function getDiffAttribute() {
+        return $this->points - $this->pointsAgainst;
+    }
+
+    public function getRankingScoreAttribute() {
+        return $this->wins * 1000 + $this->points; // + ($this->diff/1000);
+    }
 }
