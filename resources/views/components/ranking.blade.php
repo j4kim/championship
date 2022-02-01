@@ -23,7 +23,7 @@
                 <td class="p-1">{{ $participant['wins'] }}</td>
                 <td class="p-1">{{ $participant['points'] }}</td>
                 <td class="p-1 font-bold">
-                    {{ $participant['champPoints'] > 0 ? '+' : '' }}{{ $participant['champPoints'] }}
+                    +{{ $participant['champPoints'] }}
                 </td>
             </tr>
         @endforeach
