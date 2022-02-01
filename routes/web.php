@@ -39,7 +39,7 @@ Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
         'competition',
         'games.player1.user', 'games.player2.user',
         'host',
-        'participants.tournament.games'
+        'participants.tournament.games', 'participants.user'
     );
     foreach ($tournament->participants as $participant) {
         $participant->append('wins', 'points', 'gamesPlayed');
