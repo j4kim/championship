@@ -19,7 +19,7 @@ class Participant extends Model
 
     public function getGamesAttribute() {
         return $this->tournament->games->filter(fn($g) =>
-            $g->player_1_id == $this->id || $g->player_2_id == $this->id
+            $g->played && ($g->player_1_id == $this->id || $g->player_2_id == $this->id)
         );
     }
 

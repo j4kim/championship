@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
                 'player_1_score' => 11,
                 'player_2_id' => $jojo->id,
                 'player_2_score' => 8,
+                'played' => true
             ],
             [
                 'number' => 2,
