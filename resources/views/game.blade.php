@@ -47,12 +47,20 @@
 
                 <hr class="my-8">
 
-                <a href="{{ url("/tournaments/$tournament[id]") }}" class="py-2 px-6 mr-2 font-semibold rounded-md bg-gray-300">
-                    Annuler
-                </a>
-                <button class="py-2 px-6 font-semibold rounded-md bg-indigo-600 text-white">
-                    Sauver
-                </button>
+                <div class="flex items-center">
+                    <a href="{{ url("/tournaments/$tournament[id]") }}" class="py-2 px-6 mr-2 font-semibold rounded-md bg-gray-300">
+                        Annuler
+                    </a>
+                    <button class="py-2 px-6 mr-2 font-semibold rounded-md bg-indigo-600 text-white">
+                        Sauver
+                    </button>
+                    <div class="grow"></div>
+                    <form action="" method="post"></form>
+                    <button name="delete" value="please" class="text-sm py-2 px-4 -my-2 rounded-md text-red-600 border hover:border-red-400">
+                        <i class="fas fa-trash md:mr-2 mt-1"></i>
+                        <span class="hidden md:inline">Supprimer</span>
+                    </button>
+                </div>
             </form>
         </div>
     </div>
