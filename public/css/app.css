@@ -1490,6 +1490,14 @@ select {
 }
 @media (min-width: 768px) {
 
+  .md\:mr-2 {
+    margin-right: 0.5rem;
+  }
+
+  .md\:inline {
+    display: inline;
+  }
+
   .md\:grid {
     display: grid;
   }
