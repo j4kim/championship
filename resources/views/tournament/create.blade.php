@@ -12,9 +12,9 @@
             <form action="{{ url("/competitions/$competition->id/tournament") }}" method="POST">
                 @csrf
 
-                <div class="mb-8" x-data="{ host_id: null }">
+                <div class="mb-8">
                     <span class="text-gray-700">Hôte</span>
-                    <select class="block w-full md:w-1/3 mt-1" name="host_id" x-model="host_id">
+                    <select class="block w-full md:w-1/3 mt-1" name="host_id">
                         <option value=""></option>
                         @foreach ($users as $user)
                             <option value="{{ $user['id'] }}">
