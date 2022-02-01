@@ -24,12 +24,6 @@ Generate an application key:
 php artisan key:generate
 ```
 
-Generate an application key:
-
-```
-php artisan key:generate
-```
-
 Configure database:
 - create a `database/db.slite` file
 - copy absolute path into `DB_DATABASE`
