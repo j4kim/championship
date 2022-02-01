@@ -39,7 +39,7 @@
                     <textarea type="text" class="block w-full md:w-2/3 mt-1" name="conditions" x-model="conditions"></textarea>
                 </div>
 
-                <div x-data="upload({{ Js::from($pictures) }})">
+                <div class="mb-8" x-data="upload({{ Js::from($pictures) }})">
                     <div class="flex">
                         <template x-for="image in images">
                             <div class="mr-4 relative">
@@ -55,7 +55,17 @@
                     </button>
                     <input type="hidden" name="pictures" x-bind:value="JSON.stringify(images)">
                 </div>
+
+                <div>
+                    <label class="inline-flex items-center">
+                        <input type='hidden' name='finished' value='0'>
+                        <input type="checkbox" name="finished" value="1" {{ $finished ? 'checked' : '' }}>
+                        <span class="ml-2">Le tournoi est terminé</span>
+                    </label>
+                </div>
+
                 <hr class="my-8">
+
                 <a href="{{ url("/tournaments/$id") }}" class="py-2 px-6 mr-2 font-semibold rounded-md bg-gray-300">
                     Annuler
                 </a>

@@ -24,6 +24,7 @@ class CreateTournamentsTable extends Migration
             $table->text('menu')->nullable();
             $table->text('conditions')->nullable();
             $table->json('pictures')->default('[]');
+            $table->boolean('finished')->default(0);
         });
     }
 
