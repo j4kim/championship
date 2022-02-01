@@ -23,7 +23,7 @@
                     <select class="block w-full md:w-1/3 mt-1" name="host_id" x-model="host_id">
                         @foreach ($participants as $participant)
                             <option value="{{ $participant['id'] }}">
-                                {{ $participant['name'] }}
+                                {{ $participant['user']['name'] }}
                             </option>
                         @endforeach
                     </select>
@@ -55,7 +55,7 @@
                     </button>
                     <input type="hidden" name="pictures" x-bind:value="JSON.stringify(images)">
                 </div>
-                <hr class="my-4">
+                <hr class="my-8">
                 <a href="{{ url("/tournaments/$id") }}" class="py-2 px-6 mr-2 font-semibold rounded-md bg-gray-300">
                     Annuler
                 </a>

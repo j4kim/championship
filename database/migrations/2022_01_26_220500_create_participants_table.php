@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Participants extends Migration
+class CreateParticipantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,6 +14,7 @@ class Participants extends Migration
     public function up()
     {
         Schema::create('participants', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('tournament_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->unique(['tournament_id', 'user_id']);

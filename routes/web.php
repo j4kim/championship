@@ -35,11 +35,21 @@ Route::get('/competitions/{competition}', function (Competition $competition) {
 })->middleware(['auth']);
 
 Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
-    return view("tournament", $tournament->load('competition', 'games.player1', 'games.player2', 'host'));
+    $tournament->load(
+        'competition',
+        'games.player1.user', 'games.player2.user',
+        'host',
+        'participants.tournament.games', 'participants.user'
+    );
+    foreach ($tournament->participants as $participant) {
+        $participant->append('wins', 'points', 'gamesPlayed', 'rankingScore');
+    }
+    $tournament->append('ranking');
+    return view("tournament", $tournament);
 })->middleware(['auth']);
 
 Route::get('/tournaments/{tournament}/edit', function (Tournament $tournament) {
-    $tournament->load('participants');
+    $tournament->load('participants.user');
     return view("tournament.edit", $tournament);
 })->middleware(['auth']);
 
