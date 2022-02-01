@@ -40,6 +40,14 @@ Route::get('/competitions/{competition}/tournament/create', function (Competitio
     return view("tournament.create", compact('competition', 'users'));
 })->middleware(['auth']);
 
+Route::post('/competitions/{competition}/tournament', function (Competition $competition, Request $request) {
+    $tournament = $competition->tournaments()->create([
+        'start_date' => now(),
+        'host_id' => $request->host_id
+    ]);
+    return redirect("tournaments/$tournament->id");
+})->middleware(['auth']);
+
 Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
     $tournament->load(
         'competition',

@@ -14,6 +14,8 @@ class Tournament extends Model
         'pictures' => 'array'
     ];
 
+    protected $fillable = ['host_id', 'start_date'];
+
     public function competition() {
         return $this->belongsTo(Competition::class);
     }
