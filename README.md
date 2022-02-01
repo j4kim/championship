@@ -38,8 +38,14 @@ Run local server:
 php artisan serve
 ```
 
+Install javascript dependencies:
+
+```
+npm install
+```
+
 Run asset compilation:
 
 ```
-npm run develop
+npm run watch
 ```
