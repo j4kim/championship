@@ -8,7 +8,6 @@
             <th class="p-1">MJ</th>
             <th class="p-1">V</th>
             <th class="p-1">P</th>
-            <th class="p-1">C</th>
         </tr>
     </thead>
     <tbody class="border-t border-gray-200">
@@ -28,9 +27,6 @@
                 <td class="p-1">{{ $participant['gamesPlayed'] }}</td>
                 <td class="p-1">{{ $participant['wins'] }}</td>
                 <td class="p-1">{{ $participant['points'] }}</td>
-                <td class="p-1">
-                    +{{ $participant['champPoints'] }}
-                </td>
             </tr>
         @endforeach
     </tbody>
