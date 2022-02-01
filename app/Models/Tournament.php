@@ -29,4 +29,20 @@ class Tournament extends Model
     public function host() {
         return $this->belongsTo(User::class);
     }
+
+    public function getRankingAttribute() {
+        $sorted = $this->participants->sortByDesc(function($participant){
+            return $participant->rankingScore;
+        })->values();
+        foreach ($sorted as $index => $current) {
+            $current->rank = $index + 1;
+            if ($index > 0) {
+                $previous = $sorted[$index - 1];
+                if ($previous->rankingScore === $current->rankingScore) {
+                    $current->rank = $previous->rank;
+                }
+            }
+        }
+        return $sorted;
+    }
 }
