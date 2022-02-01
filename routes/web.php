@@ -3,6 +3,7 @@
 use App\Models\Competition;
 use App\Models\Game;
 use App\Models\Tournament;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,11 @@ Route::post('/competitions', function () {
 
 Route::get('/competitions/{competition}', function (Competition $competition) {
     return view("competition", $competition->load('tournaments'));
+})->middleware(['auth']);
+
+Route::get('/competitions/{competition}/tournament/create', function (Competition $competition) {
+    $users = User::all();
+    return view("tournament.create", compact('competition', 'users'));
 })->middleware(['auth']);
 
 Route::get('/tournaments/{tournament}', function (Tournament $tournament) {
