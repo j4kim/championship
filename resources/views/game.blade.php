@@ -13,14 +13,15 @@
 
     <div class="py-24">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form action="{{ url("/games/$id") }}" method="POST">
+            <form action="{{ url("/games/$id") }}" method="POST" x-data="{
+                score1: {{ $player_1_score }},
+                score2: {{ $player_2_score }},
+                played: {{ Js::from($played) }}
+            }">
                 @method('PUT')
                 @csrf
 
-                <div class="mb-12 md:px-60 flex text-2xl" x-data="{
-                    score1: {{ $player_1_score }},
-                    score2: {{ $player_2_score }}
-                }">
+                <div class="mb-12 md:px-60 flex text-2xl">
                     <div class="w-1/2 flex flex-col items-center">
                         <h2 class="font-bold">{{ $player1['user']['name'] }}</h2>
                         <input class="my-4 text-3xl w-24" min="0" type="number" name="player_1_score" x-model="score1">
@@ -39,8 +40,7 @@
 
                 <div class="mb-8">
                     <label class="inline-flex items-center">
-                        <input type='hidden' name='played' value='0'>
-                        <input type="checkbox" name="played" value="1" {{ $played ? 'checked' : '' }}>
+                        <input type="checkbox" name="played" x-model="played" value="1">
                         <span class="ml-2">Match terminé</span>
                     </label>
                 </div>

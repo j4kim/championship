@@ -79,7 +79,7 @@ Route::put('/games/{game}', function (Game $game, Request $request) {
     if ($request->delete) {
         $game->delete();
     } else {
-        $game->played = $request->played;
+        $game->played = @$request->played ?: false;
         $game->player_1_score = $request->player_1_score;
         $game->player_2_score = $request->player_2_score;
         $game->save();
