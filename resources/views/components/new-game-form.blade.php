@@ -2,7 +2,7 @@
 
 
 <form
-    class="flex"
+    class="flex -m-1"
     action="{{ url("/tournaments/$tournamentId/game") }}"
     method="POST"
     x-data="{
@@ -13,7 +13,7 @@
     x-effect="if (player_1_id && player_2_id) { $root.submit() }"
 >
     @csrf
-    <select class="block w-1/2" name="player_1_id" x-model="player_1_id">
+    <select class="block w-1/2 m-1" name="player_1_id" x-model="player_1_id">
         <option value=""></option>
         <template x-for="player in players">
             <option
@@ -23,7 +23,7 @@
             ></option>
         </template>
     </select>
-    <select class="block w-1/2" name="player_2_id" x-model="player_2_id">
+    <select class="block w-1/2 m-1" name="player_2_id" x-model="player_2_id">
         <option value=""></option>
         <template x-for="player in players">
             <option
