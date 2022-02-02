@@ -6,8 +6,8 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-5 gap-12">
+            <div class="bg-white shadow-sm sm:rounded-lg col-span-5 md:col-span-3">
                 <div class="p-4">
                     <div class="mb-4 text-xs text-gray-600">
                         Liste des rencontres
@@ -31,36 +31,39 @@
                     </div>
                 </div>
             </div>
-            <div class="text-xs text-gray-600 mt-6">
-                Classement général
-            </div>
-            <table class="w-full">
-                <thead>
-                    <tr class="text-left text-xs">
-                        <th class="w-6"></th>
-                        <th class="p-1 py-1.5">Joueur</th>
-                        <th class="p-1 py-1.5">Points</th>
-                    </tr>
-                </thead>
-                <tbody class="border-t border-gray-200">
-                    @foreach ($standings as $result)
-                        <tr class="border-b border-gray-200">
-                            <th class="text-xs">
-                                <div class="text-white w-4 h-4 rounded-full {{
-                                    match ($result['rank']) {
-                                        1 => 'bg-yellow-500',
-                                        2 => 'bg-slate-400',
-                                        3 => 'bg-amber-600',
-                                        default => 'text-current'
-                                    }
-                                }}">{{ $result['rank'] }}</div>
-                            </th>
-                            <td class="p-1 py-1.5">{{ $result['user']['name'] }}</td>
-                            <td class="p-1 py-1.5">{{ $result['points'] }}</td>
+
+            <div class="bg-gray-200 sm:rounded-lg p-4 col-span-5 md:col-span-2">
+                <div class="text-xs mb-4">
+                    Classement général
+                </div>
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left text-xs">
+                            <th class="w-6"></th>
+                            <th class="p-1 py-1.5">Joueur</th>
+                            <th class="p-1 py-1.5">Points</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="border-t border-gray-300">
+                        @foreach ($standings as $result)
+                            <tr class="border-b border-gray-300">
+                                <th class="text-xs">
+                                    <div class="text-white w-4 h-4 rounded-full {{
+                                        match ($result['rank']) {
+                                            1 => 'bg-yellow-500',
+                                            2 => 'bg-slate-400',
+                                            3 => 'bg-amber-600',
+                                            default => 'text-current'
+                                        }
+                                    }}">{{ $result['rank'] }}</div>
+                                </th>
+                                <td class="p-1 py-1.5">{{ $result['user']['name'] }}</td>
+                                <td class="p-1 py-1.5">{{ $result['points'] }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
