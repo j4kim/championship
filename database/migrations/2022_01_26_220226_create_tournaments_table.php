@@ -17,8 +17,7 @@ class CreateTournamentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('competition_id')->constrained();
-            $table->date('start_date')->nullable()->useCurrent();
-            $table->date('end_date')->nullable();
+            $table->date('date')->nullable()->useCurrent();
             $table->foreignId('host_id')->constrained('users');
             $table->string('spot')->nullable();
             $table->text('menu')->nullable();

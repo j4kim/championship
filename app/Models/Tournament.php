@@ -10,11 +10,21 @@ class Tournament extends Model
     use HasFactory;
 
     protected $casts = [
-        'start_date' => 'date:d.m.Y',
+        'date' => 'date:Y-m-d',
         'pictures' => 'array'
     ];
 
-    protected $fillable = ['host_id', 'start_date'];
+    protected $appends = ['formattedDate'];
+
+    protected $fillable = ['host_id', 'date'];
+
+    protected static function booted() {
+        static::updated(function ($tournament) {
+            if ($tournament->wasChanged('finished') && $tournament->finished) {
+                $tournament->finish();
+            }
+        });
+    }
 
     public function competition() {
         return $this->belongsTo(Competition::class);
@@ -28,8 +38,16 @@ class Tournament extends Model
         return $this->hasMany(Participant::class);
     }
 
+    public function results() {
+        return $this->hasMany(Result::class);
+    }
+
     public function host() {
         return $this->belongsTo(User::class);
+    }
+
+    public function getFormattedDateAttribute() {
+        return $this->date->format('d.m.Y');
     }
 
     public function getRankingAttribute() {
@@ -52,5 +70,16 @@ class Tournament extends Model
             };
         }
         return $sorted;
+    }
+
+    public function finish() {
+        $this->results()->delete();
+        foreach ($this->ranking as $participant) {
+            $this->results()->create([
+                'competition_id' => $this->competition_id,
+                'user_id' => $participant->user_id,
+                'points' => $participant->champPoints
+            ]);
+        }
     }
 }

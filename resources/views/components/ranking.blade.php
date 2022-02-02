@@ -4,7 +4,7 @@
     <thead>
         <tr class="text-left text-xs">
             <th></th>
-            <th class="p-1 py-1.5 w-3/5">Player</th>
+            <th class="p-1 py-1.5 w-3/5">Joueur</th>
             <th class="p-1 py-1.5">MJ</th>
             <th class="p-1 py-1.5">V</th>
             <th class="p-1 py-1.5">P</th>

@@ -32,7 +32,8 @@ Route::post('/competitions', function () {
 })->middleware(['auth']);
 
 Route::get('/competitions/{competition}', function (Competition $competition) {
-    return view("competition", $competition->load('tournaments'));
+    $competition->load('tournaments')->append('standings');
+    return view("competition", $competition);
 })->middleware(['auth']);
 
 Route::get('/competitions/{competition}/tournament/create', function (Competition $competition) {
@@ -42,7 +43,7 @@ Route::get('/competitions/{competition}/tournament/create', function (Competitio
 
 Route::post('/competitions/{competition}/tournament', function (Competition $competition, Request $request) {
     $tournament = $competition->tournaments()->create([
-        'start_date' => now(),
+        'date' => now(),
         'host_id' => $request->host_id
     ]);
     $tournament->participants()->createMany(
@@ -72,6 +73,7 @@ Route::get('/tournaments/{tournament}/edit', function (Tournament $tournament) {
 
 Route::put('/tournaments/{tournament}', function (Tournament $tournament, Request $request) {
     $tournament->pictures = json_decode($request->pictures);
+    $tournament->date = $request->date;
     $tournament->spot = $request->spot;
     $tournament->host_id = $request->host_id;
     $tournament->menu = $request->menu;

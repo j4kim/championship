@@ -6,7 +6,7 @@
                     {{ $competition["name"] }}
                 </a>
                 <i class="fas fa-angle-right text-sm mx-2"></i>
-                Tournoi #{{ $id }} du {{ $start_date }}
+                Tournoi #{{ $id }} du {{ $formattedDate }}
             </h2>
             <a href="{{ url("/tournaments/$id/edit") }}" class="text-sm py-2 px-4 -my-2 rounded-md text-indigo-600 border hover:border-indigo-400">
                 <i class="fas fa-edit md:mr-2 mt-1"></i>

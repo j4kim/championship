@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex">
             <h2 class="text-xl text-gray-800 leading-tight grow">
-                Modification du tournoi #{{ $id }} du {{ $start_date }}
+                Modification du tournoi #{{ $id }} du {{ $formattedDate }}
             </h2>
         </div>
     </x-slot>
@@ -13,30 +13,37 @@
                 @method('PUT')
                 @csrf
 
-                <div class="mb-8" x-data="{ host_id: {{ $host_id }}}">
-                    <span class="text-gray-700">Hôte</span>
-                    <select class="block w-full md:w-1/3 mt-1" name="host_id" x-model="host_id">
-                        @foreach ($participants as $participant)
-                            <option value="{{ $participant['user']['id'] }}">
-                                {{ $participant['user']['name'] }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
+                <div class="md:grid gap-8 grid-cols-3">
+                    <div class="mb-8" x-data="{ host_id: {{ $host_id }}}">
+                        <span class="text-gray-700">Hôte</span>
+                        <select class="block w-full mt-1" name="host_id" x-model="host_id">
+                            @foreach ($participants as $participant)
+                                <option value="{{ $participant['user']['id'] }}">
+                                    {{ $participant['user']['name'] }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                <div class="mb-8">
-                    <span class="text-gray-700">Spot</span>
-                    <input type="text" class="block w-full md:w-1/3 mt-1" name="spot" value="{{ $spot }}">
+                    <div class="mb-8">
+                        <span class="text-gray-700">Date</span>
+                        <input type="date" class="block w-full mt-1" name="date" value="{{ $date }}">
+                    </div>
+
+                    <div class="mb-8">
+                        <span class="text-gray-700">Spot</span>
+                        <input type="text" class="block w-full mt-1" name="spot" value="{{ $spot }}">
+                    </div>
                 </div>
 
                 <div class="mb-8" x-data="{ menu: {{ Js::from($menu) }} }">
                     <span class="text-gray-700">Menu</span>
-                    <textarea type="text" class="block w-full md:w-2/3 mt-1" name="menu" x-model="menu"></textarea>
+                    <textarea type="text" class="block w-full mt-1" name="menu" x-model="menu"></textarea>
                 </div>
 
                 <div class="mb-8" x-data="{ conditions: {{ Js::from($conditions) }} }">
                     <span class="text-gray-700">Conditions</span>
-                    <textarea type="text" class="block w-full md:w-2/3 mt-1" name="conditions" x-model="conditions"></textarea>
+                    <textarea type="text" class="block w-full mt-1" name="conditions" x-model="conditions"></textarea>
                 </div>
 
                 <div class="mb-8" x-data="upload({{ Js::from($pictures) }})">

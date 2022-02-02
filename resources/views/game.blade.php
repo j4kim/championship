@@ -3,7 +3,7 @@
         <div class="flex">
             <h2 class="text-xl text-gray-800 leading-tight grow">
                 <a href="{{ url("/tournaments/$tournament[id]") }}" class="text-gray-500 hover:text-black">
-                    Tournoi #{{ $tournament['id'] }} du {{ $tournament['start_date'] }}
+                    Tournoi #{{ $tournament['id'] }} du {{ $tournament['date'] }}
                 </a>
                 <i class="fas fa-angle-right text-sm mx-2"></i>
                 Match {{ $player1['user']['name'] }} / {{ $player2['user']['name'] }}
