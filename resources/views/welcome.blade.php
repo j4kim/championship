@@ -47,7 +47,7 @@
                         </g>
                     </svg>
 
-                    <h1 style="color:white; margin: 1rem 2rem 0 2rem">
+                    <h1 style="color:white; margin: 1rem 1rem 0 1rem">
                         Championship
                     </h1>
 
