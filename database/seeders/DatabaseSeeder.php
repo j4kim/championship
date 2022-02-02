@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $xaxa = User::factory()->create([ 'name' => 'Xaxa', ]);
         $titi = User::factory()->create([ 'name' => 'Titi', ]);
-        $competition = Competition::create([ 'name' => 'Championnat des légendes' ]);
+        $competition = Competition::create([ 'name' => 'Championnat des légendes 2022' ]);
         $tournament = Tournament::create([
             'competition_id' => $competition->id,
             'host_id' => $xaxa->id,
