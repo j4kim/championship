@@ -32,8 +32,36 @@
                 </div>
             </div>
             <div class="text-xs text-gray-600 mt-6">
-                Classement
+                Classement général
             </div>
+            <table class="w-full">
+                <thead>
+                    <tr class="text-left text-xs">
+                        <th class="w-6"></th>
+                        <th class="p-1 py-1.5">Joueur</th>
+                        <th class="p-1 py-1.5">Points</th>
+                    </tr>
+                </thead>
+                <tbody class="border-t border-gray-200">
+                    @foreach ($standings as $result)
+                        <tr class="border-b border-gray-200">
+                            <th class="text-xs">
+                                <div class="text-white w-4 h-4 rounded-full {{
+                                    match ($result['rank']) {
+                                        1 => 'bg-yellow-500',
+                                        2 => 'bg-slate-400',
+                                        3 => 'bg-amber-600',
+                                        default => 'text-current'
+                                    }
+                                }}">{{ $result['rank'] }}</div>
+                            </th>
+                            <td class="p-1 py-1.5">{{ $result['user']['name'] }}</td>
+                            <td class="p-1 py-1.5">{{ $result['points'] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
         </div>
     </div>
 

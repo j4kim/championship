@@ -32,7 +32,8 @@ Route::post('/competitions', function () {
 })->middleware(['auth']);
 
 Route::get('/competitions/{competition}', function (Competition $competition) {
-    return view("competition", $competition->load('tournaments'));
+    $competition->load('tournaments')->append('standings');
+    return view("competition", $competition);
 })->middleware(['auth']);
 
 Route::get('/competitions/{competition}/tournament/create', function (Competition $competition) {
