@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex">
             <h2 class="text-xl text-gray-800 leading-tight grow">
-                Modification du tournoi #{{ $id }} du {{ $date }}
+                Modification du tournoi #{{ $id }} du {{ $formattedDate }}
             </h2>
         </div>
     </x-slot>
@@ -22,6 +22,11 @@
                             </option>
                         @endforeach
                     </select>
+                </div>
+
+                <div class="mb-8">
+                    <span class="text-gray-700">Date</span>
+                    <input type="date" class="block w-full md:w-1/3 mt-1" name="date" value="{{ $date }}">
                 </div>
 
                 <div class="mb-8">

@@ -10,9 +10,11 @@ class Tournament extends Model
     use HasFactory;
 
     protected $casts = [
-        'date' => 'date:d.m.Y',
+        'date' => 'date:Y-m-d',
         'pictures' => 'array'
     ];
+
+    protected $appends = ['formattedDate'];
 
     protected $fillable = ['host_id', 'date'];
 
@@ -30,6 +32,10 @@ class Tournament extends Model
 
     public function host() {
         return $this->belongsTo(User::class);
+    }
+
+    public function getFormattedDateAttribute() {
+        return $this->date->format('d.m.Y');
     }
 
     public function getRankingAttribute() {
