@@ -18,6 +18,14 @@ class Tournament extends Model
 
     protected $fillable = ['host_id', 'date'];
 
+    protected static function booted() {
+        static::updated(function ($tournament) {
+            if ($tournament->wasChanged('finished') && $tournament->finished) {
+                $tournament->finish();
+            }
+        });
+    }
+
     public function competition() {
         return $this->belongsTo(Competition::class);
     }
@@ -28,6 +36,10 @@ class Tournament extends Model
 
     public function participants() {
         return $this->hasMany(Participant::class);
+    }
+
+    public function results() {
+        return $this->hasMany(Result::class);
     }
 
     public function host() {
@@ -58,5 +70,16 @@ class Tournament extends Model
             };
         }
         return $sorted;
+    }
+
+    public function finish() {
+        $this->results()->delete();
+        foreach ($this->ranking as $participant) {
+            $this->results()->create([
+                'competition_id' => $this->competition_id,
+                'user_id' => $participant->user_id,
+                'points' => $participant->champPoints
+            ]);
+        }
     }
 }
