@@ -16,7 +16,7 @@
                         @foreach ($tournaments as $tournament)
                             <a href="{{ url("/tournaments/$tournament[id]") }}">
                                 <li class="border-b py-2 hover:text-indigo-500">
-                                    Tournoi #{{ $tournament['id'] }} du {{ $tournament['date'] }}
+                                    Tournoi #{{ $tournament['id'] }} du {{ $tournament['formattedDate'] }}
                                 </li>
                             </a>
                         @endforeach
