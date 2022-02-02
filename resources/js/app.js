@@ -2,9 +2,6 @@ require('./bootstrap');
 
 import Alpine from 'alpinejs';
 
-import '@fortawesome/fontawesome-free/css/solid.css'
-import '@fortawesome/fontawesome-free/css/fontawesome.css'
-
 Alpine.data('upload', (initialArray = []) => ({
     images: initialArray,
 
