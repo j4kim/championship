@@ -42,7 +42,7 @@ Route::get('/competitions/{competition}/tournament/create', function (Competitio
 
 Route::post('/competitions/{competition}/tournament', function (Competition $competition, Request $request) {
     $tournament = $competition->tournaments()->create([
-        'start_date' => now(),
+        'date' => now(),
         'host_id' => $request->host_id
     ]);
     $tournament->participants()->createMany(

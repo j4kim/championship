@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex">
             <h2 class="text-xl text-gray-800 leading-tight grow">
-                Modification du tournoi #{{ $id }} du {{ $start_date }}
+                Modification du tournoi #{{ $id }} du {{ $date }}
             </h2>
         </div>
     </x-slot>

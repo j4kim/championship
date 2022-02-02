@@ -10,11 +10,11 @@ class Tournament extends Model
     use HasFactory;
 
     protected $casts = [
-        'start_date' => 'date:d.m.Y',
+        'date' => 'date:d.m.Y',
         'pictures' => 'array'
     ];
 
-    protected $fillable = ['host_id', 'start_date'];
+    protected $fillable = ['host_id', 'date'];
 
     public function competition() {
         return $this->belongsTo(Competition::class);
