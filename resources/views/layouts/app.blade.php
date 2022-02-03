@@ -14,6 +14,9 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        <!-- Icon -->
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
         <!-- Scripts -->
         <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
