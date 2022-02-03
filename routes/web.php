@@ -77,6 +77,7 @@ Route::put('/tournaments/{tournament}', function (Tournament $tournament, Reques
     $tournament->spot = $request->spot;
     $tournament->host_id = $request->host_id;
     $tournament->menu = $request->menu;
+    $tournament->conditions = $request->conditions;
     $tournament->finished = $request->finished;
     $tournament->save();
     return redirect("tournaments/$tournament->id");
