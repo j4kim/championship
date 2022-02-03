@@ -20,7 +20,7 @@
             <div class="mb-4 md:mb-0 row-span-2">
                 <div class="grid gap-4 grid-cols-3 mb-4">
                     @foreach ($pictures as $picture)
-                    <a href="{{ $picture['secure_url'] }}" class="{{ $loop->first ? 'col-span-3' : 'col-span-3' }}">
+                    <a href="{{ $picture['secure_url'] }}" class="{{ $loop->first ? 'col-span-3' : 'col-span-1' }}">
                         <img src="{{ $picture['secure_url'] }}" class="rounded-lg w-full max-h-[40vh] object-cover {{ !$loop->first ? 'aspect-square' : '' }}">
                     </a>
                     @endforeach
