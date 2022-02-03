@@ -1,3 +1,5 @@
+@section('title', $name)
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl text-gray-800 leading-tight">
@@ -6,7 +8,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-5 gap-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-5 gap-12 items-start">
             <div class="bg-white shadow-sm sm:rounded-lg col-span-5 md:col-span-3">
                 <div class="p-4">
                     <div class="mb-4 text-xs text-gray-600">

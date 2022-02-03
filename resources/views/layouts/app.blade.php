@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name') }} - @yield('title', '🏓')</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -13,6 +13,9 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        <!-- Icon -->
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
         <!-- Scripts -->
         <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
