@@ -9,6 +9,8 @@ class Competition extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function tournaments() {
         return $this->hasMany(Tournament::class);
     }

@@ -26,8 +26,12 @@ Route::get('/dashboard', function () {
     return view('dashboard', ['competitions' => Auth::user()->competitions]);
 })->middleware(['auth'])->name('dashboard');
 
-Route::post('/competitions', function () {
-    $competition = Competition::create();
+Route::get('/competitions/create', function () {
+    return view('competition.create');
+})->middleware(['auth']);
+
+Route::post('/competitions', function (Request $request) {
+    $competition = Competition::create($request->all());
     return redirect("competitions/$competition->id");
 })->middleware(['auth']);
 
