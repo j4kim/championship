@@ -42,8 +42,8 @@ Route::get('/competitions/{competition}', function (Competition $competition) {
 })->middleware(['auth']);
 
 Route::get('/competitions/{competition}/tournament/create', function (Competition $competition) {
-    $users = User::all();
-    return view("tournament.create", compact('competition', 'users'));
+    $competition->load('users');
+    return view("tournament.create", compact('competition'));
 })->middleware(['auth']);
 
 Route::post('/competitions/{competition}/tournament', function (Competition $competition, Request $request) {
