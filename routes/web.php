@@ -32,6 +32,7 @@ Route::get('/competitions/create', function () {
 
 Route::post('/competitions', function (Request $request) {
     $competition = Competition::create($request->all());
+    $competition->users()->attach(Auth::id());
     return redirect("competitions/$competition->id");
 })->middleware(['auth']);
 
