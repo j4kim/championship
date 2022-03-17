@@ -52,8 +52,9 @@
                     </div>
                     <template x-for="email in participants">
                         <div>
-                            <div x-text="email"></div>
+                            <span x-text="email"></span>
                             <input x-bind:value="email" type="hidden" name="users[]">
+                            <button type="button" x-on:click="participants = participants.filter(p => p !== email)">x</button>
                         </div>
                     </template>
                 </div>
