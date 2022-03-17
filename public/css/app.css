@@ -724,6 +724,15 @@ select {
 .mt-6 {
   margin-top: 1.5rem;
 }
+.-mt-4 {
+  margin-top: -1rem;
+}
+.-mt-1 {
+  margin-top: -0.25rem;
+}
+.-mt-2 {
+  margin-top: -0.5rem;
+}
 .block {
   display: block;
 }
@@ -768,6 +777,9 @@ select {
 }
 .h-20 {
   height: 5rem;
+}
+.h-7 {
+  height: 1.75rem;
 }
 .max-h-\[40vh\] {
   max-height: 40vh;
