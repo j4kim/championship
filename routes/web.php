@@ -5,6 +5,7 @@ use App\Models\Game;
 use App\Models\Tournament;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,12 +28,17 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/competitions/create', function () {
-    return view('competition.create');
+    return view('competition.create', [
+        'users' => User::all()
+    ]);
 })->middleware(['auth']);
 
 Route::post('/competitions', function (Request $request) {
-    $competition = Competition::create($request->all());
-    $competition->users()->attach(Auth::id());
+    $competition = Competition::create($request->except('users'));
+    $userIds = $request->collect('users')->map(fn($email) =>
+        User::firstOrCreate(['email' => $email], ['name' => $email, 'password' => ''])
+    )->pluck('id');
+    $competition->users()->attach($userIds);
     return redirect("competitions/$competition->id");
 })->middleware(['auth']);
 
