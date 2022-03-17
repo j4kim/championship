@@ -9,18 +9,26 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form action="{{ url('/competitions') }}" method="POST">
+            <form
+                action="{{ isset($edit) ? @url("/competitions/$id") : url('/competitions') }}"
+                method="POST"
+            >
                 @csrf
 
-                <div class="mb-8">
+                <div class="mb-8" x-data="{ name: {{ @Js::from($name) }} }">
                     <span class="text-gray-700">Nom</span>
-                    <input type="text" class="block w-full mt-1" name="name" required>
+                    <input
+                        type="text"
+                        name="name" required
+                        x-bind:value="name"
+                        class="block w-full mt-1"
+                    >
                 </div>
 
                 <div class="mb-8" x-data="{
                     users: {{ Js::from($users) }},
                     selectedEmail: '',
-                    participants: ['{{ Auth::user()->email }}']
+                    participants: {{ Js::from($edit ? $participants : [Auth::user()->email]) }}
                 }">
                     <span class="text-gray-700">Participants</span>
                     <div class="flex items-baseline	">
@@ -65,7 +73,7 @@
                     Annuler
                 </a>
                 <button class="py-2 px-6 font-semibold rounded-md bg-indigo-600 text-white">
-                    Créer
+                    {{ $edit ? 'Sauver' : 'Créer' }}
                 </button>
             </form>
         </div>
