@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex">
             <h2 class="text-xl text-gray-800 leading-tight grow">
-                Création de la compétition
+                {{ $edit ? 'Modification' : 'Création' }} de la compétition
             </h2>
         </div>
     </x-slot>
@@ -10,7 +10,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form
-                action="{{ isset($edit) ? @url("/competitions/$id") : url('/competitions') }}"
+                action="{{ $edit ? @url("/competitions/$id") : url('/competitions') }}"
                 method="POST"
             >
                 @csrf
