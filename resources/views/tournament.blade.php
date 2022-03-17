@@ -27,7 +27,7 @@
                     </a>
                     @endforeach
                 </div>
-                <x-attribute label="Hôte" :value="$host['name']"/>
+                <x-attribute label="Hôte" :value="@$host['name']"/>
                 <x-attribute label="Spot" :value="$spot"/>
                 <x-attribute label="Menu" :value="$menu"/>
                 <x-attribute label="Conditions" :value="$conditions"/>

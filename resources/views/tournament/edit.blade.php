@@ -14,9 +14,10 @@
                 @csrf
 
                 <div class="md:grid gap-8 grid-cols-3">
-                    <div class="mb-8" x-data="{ host_id: {{ $host_id }}}">
+                    <div class="mb-8" x-data="{ host_id: {{ $host_id ?: 'null' }}}">
                         <span class="text-gray-700">Hôte</span>
                         <select class="block w-full mt-1" name="host_id" x-model="host_id">
+                            <option value=""></option>
                             @foreach ($participants as $participant)
                                 <option value="{{ $participant['user']['id'] }}">
                                     {{ $participant['user']['name'] }}

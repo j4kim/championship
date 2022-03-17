@@ -9,12 +9,18 @@ class Competition extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function tournaments() {
         return $this->hasMany(Tournament::class);
     }
 
     public function results() {
         return $this->hasMany(Result::class);
+    }
+
+    public function users() {
+        return $this->belongsToMany(User::class);
     }
 
     public function getStandingsAttribute() {

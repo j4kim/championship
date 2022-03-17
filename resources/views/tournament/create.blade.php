@@ -15,7 +15,7 @@
                 <div class="mb-8">
                     <span class="text-gray-700">Participants</span>
                     <select class="block w-full md:w-1/3 mt-1" name="user_ids[]" multiple required>
-                        @foreach ($users as $user)
+                        @foreach ($competition->users as $user)
                             <option value="{{ $user['id'] }}" selected>
                                 {{ $user['name'] }}
                             </option>
@@ -25,8 +25,9 @@
 
                 <div class="mb-8">
                     <span class="text-gray-700">Hôte</span>
-                    <select class="block w-full md:w-1/3 mt-1" name="host_id" required>
-                        @foreach ($users as $user)
+                    <select class="block w-full md:w-1/3 mt-1" name="host_id">
+                        <option value=""></option>
+                        @foreach ($competition->users as $user)
                             <option value="{{ $user['id'] }}">
                                 {{ $user['name'] }}
                             </option>

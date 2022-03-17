@@ -22,12 +22,11 @@
                     </ul>
                 </div>
             </div>
-            <form class="py-10 text-center" action="{{ url('/competitions') }}" method="post">
-                @csrf
-                <button class="py-2 px-6 font-semibold rounded-md bg-indigo-600 text-white">
+            <div class="py-10 text-center">
+                <a href="{{ url('/competitions/create') }}" class="py-2 px-6 font-semibold rounded-md bg-indigo-600 text-white">
                     <i class="fas fa-plus mr-2"></i> Nouvelle compétition
-                </button>
-            </form>
+                </a>
+            </div>
         </div>
     </div>
 

@@ -2,9 +2,15 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl text-gray-800 leading-tight">
-            {{ $name }}
-        </h2>
+        <div class="flex items-center">
+            <h2 class="text-xl text-gray-800 leading-tight grow">
+                {{ $name }}
+            </h2>
+            <a href="{{ url("/competitions/$id/edit") }}" class="text-sm py-2 px-4 -my-2 rounded-md text-indigo-600 border hover:border-indigo-400">
+                <i class="fas fa-edit md:mr-2 mt-1"></i>
+                <span class="hidden md:inline">Modifier</span>
+            </a>
+        </div>
     </x-slot>
 
     <div class="py-12">

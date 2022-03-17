@@ -5,6 +5,7 @@ use App\Models\Game;
 use App\Models\Tournament;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +24,22 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard', ['competitions' => Competition::all()]);
+    return view('dashboard', ['competitions' => Auth::user()->competitions]);
 })->middleware(['auth'])->name('dashboard');
 
-Route::post('/competitions', function () {
-    $competition = Competition::create();
+Route::get('/competitions/create', function () {
+    return view('competition.create', [
+        'users' => User::all(),
+        'edit' => false
+    ]);
+})->middleware(['auth']);
+
+Route::post('/competitions', function (Request $request) {
+    $competition = Competition::create($request->except('users'));
+    $userIds = $request->collect('users')->map(fn($email) =>
+        User::firstOrCreate(['email' => $email], ['name' => $email, 'password' => ''])
+    )->pluck('id');
+    $competition->users()->attach($userIds);
     return redirect("competitions/$competition->id");
 })->middleware(['auth']);
 
@@ -36,9 +48,28 @@ Route::get('/competitions/{competition}', function (Competition $competition) {
     return view("competition", $competition);
 })->middleware(['auth']);
 
+Route::get('/competitions/{competition}/edit', function (Competition $competition) {
+    return view('competition.create', [
+        'users' => User::all(),
+        'participants' => $competition->users->pluck('email'),
+        'name' => $competition->name,
+        'id' => $competition->id,
+        'edit' => true,
+    ]);
+})->middleware(['auth']);
+
+Route::post('/competitions/{competition}', function (Competition $competition, Request $request) {
+    $competition->update($request->except('users'));
+    $userIds = $request->collect('users')->map(fn($email) =>
+        User::firstOrCreate(['email' => $email], ['name' => $email, 'password' => ''])
+    )->pluck('id');
+    $competition->users()->sync($userIds);
+    return redirect("competitions/$competition->id");
+})->middleware(['auth']);
+
 Route::get('/competitions/{competition}/tournament/create', function (Competition $competition) {
-    $users = User::all();
-    return view("tournament.create", compact('competition', 'users'));
+    $competition->load('users');
+    return view("tournament.create", compact('competition'));
 })->middleware(['auth']);
 
 Route::post('/competitions/{competition}/tournament', function (Competition $competition, Request $request) {
